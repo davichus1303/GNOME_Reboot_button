@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  review:
+    name: Code review
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check whitespace errors
+        run: git diff --check
+
+      - name: Check JS syntax
+        run: |
+          node --check restart-button@local/extension.js
+          node --check restart-button@local/indicator.js
+
+      - name: Validate metadata.json
+        run: |
+          python3 - <<'PY'
+          import json
+          import re
+          with open('restart-button@local/metadata.json') as f:
+              meta = json.load(f)
+          for key in ('uuid', 'name', 'description', 'shell-version'):
+              assert key in meta, f'missing key: {key}'
+          assert re.match(r'^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+$', meta['uuid']), 'bad uuid'
+          print('metadata ok:', meta['uuid'])
+          PY
+
+      - name: Check required files
+        run: |
+          test -f restart-button@local/stylesheet.css
+          test -f restart-button@local/LICENSE
+          test -f restart-button@local/locale/restart-button@local.pot
+
+      - name: Check build scripts
+        run: |
+          bash -n build-deb.sh
+          bash -n build-appimage.sh
