@@ -1,0 +1,12 @@
+{
+  "description": "Adds a restart button to the top bar. Clicking it shows the standard system confirmation dialog before restarting the computer.",
+  "gettext-domain": "restart-button@local",
+  "name": "Restart Button",
+  "shell-version": [
+    "46",
+    "47",
+    "48"
+  ],
+  "uuid": "restart-button@local",
+  "version": 1
+}

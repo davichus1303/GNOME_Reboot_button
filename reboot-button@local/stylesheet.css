@@ -1,0 +1,15 @@
+/* restart-button@local
+   hover/active sacando color del panel, asi jala con temas claros y oscuros */
+
+#panel .restart-button {
+    border-radius: 6px;
+    margin: 2px 0;
+}
+
+#panel .restart-button:hover {
+    background-color: alpha(@panel_fg_color, 0.12);
+}
+
+#panel .restart-button:active {
+    background-color: alpha(@panel_fg_color, 0.20);
+}
