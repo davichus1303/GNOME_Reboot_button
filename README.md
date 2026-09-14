@@ -21,7 +21,7 @@ A [GNOME Shell](https://www.gnome.org/) extension that adds a restart button to 
 Copy the extension folder into your local extensions directory:
 
 ```bash
-cp -r reboot-button@local ~/.local/share/gnome-shell/extensions/
+cp -r restart-button@local ~/.local/share/gnome-shell/extensions/
 ```
 
 Then enable it in GSettings:
@@ -51,18 +51,34 @@ gsettings reset org.gnome.shell enabled-extensions   # or remove the uuid from t
 
 ```text
 .
-├── reboot-button@local/   # extension source
+├── restart-button@local/   # extension source
 │   ├── extension.js       # entry point (ESM, GNOME 46 API)
 │   ├── indicator.js       # panel button
 │   ├── metadata.json
 │   ├── stylesheet.css
 │   ├── locale/            # gettext template
 │   └── LICENSE
+├── build-deb.sh           # builds the .deb package
+├── build-appimage.sh      # builds the installer AppImage
+├── .github/workflows/     # CI (code review) and CD (release)
 └── README.md
 ```
 
 The button is implemented as a `PanelMenu.Button` added through `Main.panel.addToStatusArea()`. On click it calls `SystemActions.getDefault().activateRestart()`, reusing the exact code path used by the GNOME system menu.
 
+## Packaging
+
+Two ways to install the extension without the `extensions.gnome.org` website:
+
+- **Debian package** — run `bash build-deb.sh` and install the result with
+  `sudo apt install ./dist/gnome-shell-extension-restart-button_1.0_all.deb`.
+- **AppImage** — run `bash build-appimage.sh` and run the generated
+  `dist/RestartButton-1.0-*.AppImage`. It installs the extension for the
+  current user and enables it in GSettings.
+
+CI also builds both artifacts automatically on every `v*` tag (see
+`.github/workflows/`).
+
 ## License
 
-[MIT](reboot-button@local/LICENSE)
+[MIT](restart-button@local/LICENSE)
