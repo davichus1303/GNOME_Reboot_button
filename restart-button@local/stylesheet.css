@@ -1,15 +1,17 @@
 /* restart-button@local
-   hover/active sacando color del panel, asi jala con temas claros y oscuros */
+   hover/active igual que el panel del tema (XpSilver), para que se vea
+   nativo en temas claros y oscuros */
 
 #panel .restart-button {
-    border-radius: 6px;
-    margin: 2px 0;
+    background-color: transparent;
+    border-radius: 15px;
+    box-shadow: inset 0 0 0 100px transparent;
 }
 
 #panel .restart-button:hover {
-    background-color: alpha(@panel_fg_color, 0.12);
+    box-shadow: inset 0 0 0 100px rgba(189, 230, 251, 0.075);
 }
 
 #panel .restart-button:active {
-    background-color: alpha(@panel_fg_color, 0.20);
+    box-shadow: inset 0 0 0 100px rgba(189, 230, 251, 0.125);
 }
