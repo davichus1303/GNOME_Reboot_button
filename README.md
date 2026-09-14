@@ -60,6 +60,7 @@ gsettings reset org.gnome.shell enabled-extensions   # or remove the uuid from t
 │   └── LICENSE
 ├── build-deb.sh           # builds the .deb package
 ├── build-appimage.sh      # builds the installer AppImage
+├── build-ego.sh           # builds the extensions.gnome.org zip
 ├── .github/workflows/     # CI (code review) and CD (release)
 └── README.md
 ```
