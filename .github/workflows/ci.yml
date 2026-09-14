@@ -44,3 +44,4 @@ jobs:
         run: |
           bash -n build-deb.sh
           bash -n build-appimage.sh
+          bash -n build-ego.sh
