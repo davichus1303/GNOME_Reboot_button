@@ -4,7 +4,7 @@ import RebootButton from './indicator.js';
 
 export default class RebootExtension extends Extension {
     enable() {
-        // al fondo del panel, a la derecha del % de bateria
+        // at the far end of the panel, after the battery percentage
         this._button = new RebootButton();
         Main.panel.addToStatusArea('restart-button', this._button, 100, 'right');
     }
