@@ -5,9 +5,11 @@
   "shell-version": [
     "46",
     "47",
-    "48"
+    "48",
+    "49",
+    "50"
   ],
   "url": "https://github.com/davichus1303/GNOME_Reboot_button",
   "uuid": "restart-button@local",
-  "version": 3
+  "version": 4
 }
