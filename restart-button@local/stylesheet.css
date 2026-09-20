@@ -1,6 +1,6 @@
 /* restart-button@local
-   hover/active igual que el panel del tema (XpSilver), para que se vea
-   nativo en temas claros y oscuros */
+   hover/active same as the panel theme (XpSilver), so it looks native
+   in both light and dark themes */
 
 #panel .restart-button {
     background-color: transparent;
