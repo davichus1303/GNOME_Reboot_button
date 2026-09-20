@@ -80,6 +80,24 @@ Two ways to install the extension without the `extensions.gnome.org` website:
 CI also builds both artifacts automatically on every `v*` tag (see
 `.github/workflows/`).
 
+### extensions.gnome.org
+
+Publish to the GNOME Extensions website:
+
+```bash
+bash build-ego.sh            # creates dist/restart-button@local.shell-extension.zip
+python3 -m venv venv && . venv/bin/activate
+pip install -U shexli
+shexli dist/restart-button@local.shell-extension.zip   # local review check
+```
+
+The zip contains the extension files only (no build artifacts), so it passes
+the EGO static analysis cleanly. Upload it at
+https://extensions.gnome.org/upload/ and pick this extension from the list so
+the site treats it as a new version. The `version` field in `metadata.json`
+must be higher than the last published one; each upload goes through a manual
+review.
+
 ## License
 
 [MIT](restart-button@local/LICENSE)
